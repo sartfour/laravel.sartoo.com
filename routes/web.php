@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ItemTypesController;
+use App\Http\Controllers\ItemsController;
+
+use App\Http\Controllers\ListsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +19,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $recentLists = App\Models\CustList::limit(10)->get();
+    $recentItems = App\Models\Item::limit(10)->get();
+    return view('home', compact('recentLists', 'recentItems'));
+})->name('home');
+
+
+Route::resources([
+    'item-types' => ItemTypesController::class,
+    'items' => ItemsController::class,
+]);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
