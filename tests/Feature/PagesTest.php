@@ -21,4 +21,22 @@ class PagesTest extends TestCase
 
         $response->assertSee('Register');
     }
+
+    public function testItemTypes()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+
+        $response->assertSee('Item Types');
+    }
+
+    public function testItems()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+
+        $response->assertSee('Items');
+    }
 }
