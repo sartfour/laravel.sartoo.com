@@ -5,58 +5,63 @@
         </h2>
     </x-slot>
 
-    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-        <table class="w-full text-md rounded mb-4">
-            <thead>
-            <tr class="border-b">
-                <th class="text-left p-3 px-5">Recent Lists</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($recentLists as $list)
-                <tr class="border-b hover:bg-yellow-100">
-                    <td class="p-3 px-5">
-                        {{$list->full_title}}
-                    </td>
-                </tr>
-            @empty
-                <tr class="border-b hover:bg-yellow-100">
-                    <td class="p-3 px-5">
-                        <i>No lists</i>
-                    </td>
-                    <td class="p-3 px-5">
-                    </td>
-                </tr>
-            @endforelse
-            </tbody>
-        </table>
+    <div class="py-12">
+		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+			<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
 
-        <table class="w-full text-md rounded mb-4">
-            <thead>
-            <tr class="border-b">
-                <th class="text-left p-3 px-5">Recent Items</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            @forelse($recentItems as $item)
-                <tr class="border-b hover:bg-yellow-100">
-                    <td class="p-3 px-5">
-                        <a href="{{ route('items.show', [$item]) }}">{{$item->name}}</a>
-                    </td>
-                </tr>
-            @empty
-                <tr class="border-b hover:bg-yellow-100">
-                    <td class="p-3 px-5">
-                        <i>No items</i>
-                    </td>
-                    <td class="p-3 px-5">
-                    </td>
-                </tr>
-            @endforelse
-            </tbody>
-        </table>
+                <table class="w-full text-md rounded mb-4">
+                    <thead>
+                    <tr class="border-b">
+                        <th class="text-left p-3 px-5">Recent Lists</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($recentLists as $list)
+                        <tr class="border-b hover:bg-yellow-100">
+                            <td class="p-3 px-5">
+                                {{$list->full_title}}
+                            </td>
+                        </tr>
+                    @empty
+                        <tr class="border-b hover:bg-yellow-100">
+                            <td class="p-3 px-5">
+                                <i>No lists</i>
+                            </td>
+                            <td class="p-3 px-5">
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+
+                <table class="w-full text-md rounded mb-4">
+                    <thead>
+                    <tr class="border-b">
+                        <th class="text-left p-3 px-5">Recent Items</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse($recentItems as $item)
+                        <tr class="border-b hover:bg-yellow-100">
+                            <td class="p-3 px-5">
+                                <a href="{{ route('items.show', [$item]) }}">{{$item->name}}</a>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr class="border-b hover:bg-yellow-100">
+                            <td class="p-3 px-5">
+                                <i>No items</i>
+                            </td>
+                            <td class="p-3 px-5">
+                            </td>
+                        </tr>
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
