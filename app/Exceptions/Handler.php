@@ -38,20 +38,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
-    }
 
+        $this->renderable(function (Exception $e, $request) {
+            // This will replace our 404 html response with a JSON response.
+            if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException
+                && $request->wantsJson()) {
 
-    public function render($request, Exception $exception)
-    {
-        // This will replace our 404 html response with a JSON response.
-        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException
-            && $request->wantsJson()) {
+                return response()->json([
+                    'data' => 'Resource not found'
+                ], 404);
+            }
 
-            return response()->json([
-                'data' => 'Resource not found'
-            ], 404);
-        }
-
-        return parent::render($request, $exception);
+            return parent::render($request, $exception);
+        });
     }
 }
