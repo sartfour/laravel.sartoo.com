@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (NotFoundHttpException $e, $request) {
+        $this->renderable(function (NotFoundHttpException $exception, $request) {
             // This will replace our 404 html response with a JSON response.
             if ($request->wantsJson()) {
                 return response()->json([
