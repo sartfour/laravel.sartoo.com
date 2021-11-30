@@ -47,8 +47,6 @@ class Handler extends ExceptionHandler
                     'data' => 'Resource not found'
                 ], 404);
             }
-
-            return parent::render($request, $exception);
         });
     }
 }
