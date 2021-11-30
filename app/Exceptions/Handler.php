@@ -39,17 +39,11 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (Exception $e, $request) {
+        $this->renderable(function (\Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e, $request) {
             // This will replace our 404 html response with a JSON response.
-            if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-                && $request->wantsJson()) {
-
-                return response()->json([
-                    'data' => 'Resource not found'
-                ], 404);
-            }
-
-            return parent::render($request, $exception);
+            return response()->json([
+                'data' => 'Resource not found'
+            ], 404);
         });
     }
 }
