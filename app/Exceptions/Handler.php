@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (Exception $e, $request) {
             // This will replace our 404 html response with a JSON response.
-            if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException
+            if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
                 && $request->wantsJson()) {
 
                 return response()->json([
