@@ -49,7 +49,7 @@ class ItemsApiController extends Controller
         return response()->json($item, 200);
     }
 
-    public function delete(Item $item)
+    public function destroy(Item $item)
     {
         $item->delete();
 

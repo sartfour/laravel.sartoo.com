@@ -48,7 +48,7 @@ class ItemTypesApiController extends Controller
         return response()->json($itemType, 200);
     }
 
-    public function delete(ItemType $itemType)
+    public function destroy(ItemType $itemType)
     {
         $itemType->delete();
 
