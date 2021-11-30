@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (ModelNotFoundException $e, $request) {
+        $this->renderable(function (NotFoundHttpException $e, $request) {
             // This will replace our 404 html response with a JSON response.
             if ($request->wantsJson()) {
                 return response()->json([
