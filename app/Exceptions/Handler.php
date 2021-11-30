@@ -41,10 +41,12 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function (NotFoundHttpException $exception, $request) {
-            // This will replace our 404 html response with a JSON response.
-            return response()->json([
-                'data' => 'Resource not found'
-            ], 404);
+            if ($request->is('api/*')) {
+                // This will replace our 404 html response with a JSON response.
+                return response()->json([
+                    'data' => 'Resource not found'
+                ], 404);
+            }
         });
     }
 }
