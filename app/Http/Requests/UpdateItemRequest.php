@@ -10,6 +10,20 @@ use Illuminate\Validation\Rule;
 
 class UpdateItemRequest extends FormRequest
 {
+    public function attributes()
+    {
+        return [
+            'item_type_id' => 'item type',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.unique' => 'The name of this type has already been taken.',
+        ];
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *

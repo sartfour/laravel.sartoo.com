@@ -53,7 +53,7 @@ class ItemsController extends Controller
             'user_id' => Auth::id(),
         ]);
 
-        return redirect()->route('items.index')->with('success', 'A new item was created.');
+        return redirect()->action([self::class, 'index'])->with('success', 'A new item was created.');
     }
 
     /**
@@ -94,7 +94,7 @@ class ItemsController extends Controller
             'item_type_id' => $request->item_type_id
         ]);
 
-        return redirect()->route('items.index')->with('success', 'Item has been updated.');
+        return redirect()->action([self::class, 'index'])->with('success', 'Item has been updated.');
     }
 
     /**
@@ -107,6 +107,6 @@ class ItemsController extends Controller
     {
         $item->delete();
 
-        return redirect()->route('items.index')->with('success', 'Item has been deleted.');
+        return redirect()->action([self::class, 'index'])->with('success', 'Item has been deleted.');
     }
 }
